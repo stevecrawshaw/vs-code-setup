@@ -169,3 +169,10 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Data analysis typical files and folders
+data/
+plots/
+duckdb.exe
+.duckdb
+config.yml
