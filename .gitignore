@@ -175,4 +175,5 @@ data/
 plots/
 duckdb.exe
 .duckdb
+duckdb
 config.yml
