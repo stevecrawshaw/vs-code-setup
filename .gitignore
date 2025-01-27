@@ -171,8 +171,8 @@ cython_debug/
 .pypirc
 
 # Data analysis typical files and folders
-data/
-plots/
+data/*
+plots/*
 duckdb.exe
 duckdb
 .duckdb
