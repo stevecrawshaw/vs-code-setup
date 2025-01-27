@@ -176,4 +176,5 @@ plots/*
 duckdb.exe
 duckdb
 .duckdb
+duckdb
 config.yml
