@@ -212,8 +212,8 @@ cython_debug/
 
 
 # Data analysis typical files and folders
-# plots/*
-# data/*
+plots/*
+data/*
 duckdb.exe
 .duckdb
 duckdb
