@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set version and base URL
-DUCKDB_VERSION="v1.1.3"
+DUCKDB_VERSION="v1.2.0"
 BASE_URL="https://github.com/duckdb/duckdb/releases/download/${DUCKDB_VERSION}"
 
 # Detect OS
