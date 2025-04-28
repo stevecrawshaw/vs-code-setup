@@ -137,3 +137,74 @@ FROM prices
 WHERE date_part('year', valid_from) = 2019
 WINDOW validity AS (ORDER BY valid_from)
 ORDER BY valid_from;
+
+
+-- QUALIFY - Filter on the results of a Window function
+-- QUALIFY is like a WHERE clause but for window functions
+
+SELECT dense_rank() OVER (ORDER BY power DESC) AS rnk, *
+FROM readings
+QUALIFY rnk <= 3;
+
+-- another one
+-- note QUALIFY comes after FROM as it is analagous to WHERE
+-- Can use alias to refer to the result of the window function
+
+-- find the & day moving AVG that exceeds 875 kWh
+SELECT
+    system_id,
+    day,
+    avg(kWh) OVER (PARTITION BY system_id ORDER BY day ASC  RANGE BETWEEN 
+    INTERVAL 3 Days PRECEDING
+    AND INTERVAL 3 Days FOLLOWING
+) AS "kWh 7-day moving average"
+FROM v_power_per_day
+QUALIFY "kWh 7-day moving average" > 875
+ORDER BY system_id, day;
+
+-- FILTER aggregates
+
+-- FILTER (WHERE ac_power IS NOT NULL AND ac_power >= 0):
+-- This is the crucial FILTER clause, which modifies the behavior of the preceding aggregate function (avg).
+-- Purpose: It specifies that the avg function should only consider rows that meet the 
+-- conditions within the WHERE clause before performing the averaging calculation for each group 
+-- defined by GROUP BY read_on.
+-- Conditions:
+-- ac_power IS NOT NULL: Excludes any rows where the ac_power reading is missing (NULL). 
+-- This prevents NULLs from skewing or causing errors in the average calculation.
+-- ac_power >= 0: Excludes any rows where the ac_power reading is negative. Negative AC power generation is generally physically impossible or indicates an error in the sensor or data logging. 
+-- Filtering these out improves the quality and reliability of the calculated average power.
+-- Benefit: Using FILTER is the standard SQL way to apply conditional aggregation. 
+-- It's often more readable and potentially more efficient than older methods like 
+-- avg(CASE WHEN ac_power IS NOT NULL AND ac_power >= 0 THEN ac_power ELSE NULL END).
+-- coalesce(..., 0):
+-- This is the COALESCE function.
+-- Purpose: COALESCE takes a list of arguments and returns the first argument in the list that is not NULL.
+-- Arguments:
+-- The result of avg(ac_power) FILTER (...).
+-- The literal value 0.
+-- Behavior:
+-- If the filtered average calculation (avg(ac_power) FILTER (...)) results in a valid average value (meaning there was at least one non-NULL, non-negative ac_power reading in that 15-minute time bucket), coalesce will return that average value.
+-- However, if all the ac_power readings within a specific 15-minute bucket are either NULL or negative (and therefore filtered out by the FILTER clause), the avg function will return NULL (as there are no valid rows to average).
+-- In this scenario where avg returns NULL, coalesce moves to its next argument, which is 0. Since 0 is not NULL, coalesce returns 0.
+-- Benefit: This ensures that every 15-minute interval in the output has a defined power value. Instead of potentially having NULL for power (which might complicate later analysis), intervals with no valid data are assigned an average power of 0. This often makes sense in energy contexts, representing zero generation during that period.
+-- https://g.co/gemini/share/b1dd4569df71
+INSERT INTO readings(system_id, read_on, power)
+SELECT any_value(SiteId),
+time_bucket(
+INTERVAL '15 Minutes',
+CAST("Date-Time" AS timestamp)
+) AS read_on,
+coalesce(avg(ac_power)
+FILTER (
+ac_power IS NOT NULL AND
+ac_power >= 0
+),0 )
+FROM
+read_csv_auto(
+'https://developer.nrel.gov/api/pvdaq/v3/' ||
+'data_file?api_key=DEMO_KEY&system_id=10&year=2019'
+)
+GROUP BY read_on
+ORDER BY read_on
+ON CONFLICT DO NOTHING;
