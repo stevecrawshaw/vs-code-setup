@@ -11,9 +11,10 @@
         "aaron-bond.better-comments",
         "christian-kohler.path-intellisense",
         "bierner.markdown-mermaid",
-        "postman.postman-for-vscode",
         "mechatroner.rainbow-csv",
         "RandomFractalsInc.geo-data-viewer",
-        "alexcvzz.vscode-sqlite"
+        "alexcvzz.vscode-sqlite",
+        "google.geminicodeassist",
+        "saoudrizwan.claude-dev"
     ]
 }
