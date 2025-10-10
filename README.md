@@ -13,14 +13,21 @@ Give the repo a name and description.
 Create the repository.
 
 ## Clone the repository
-git clone
+Here you are essentially copying the repo you created from the template onto your local machine, and referencing it as a git repo that is linked to the gitHUB repo.
+
+It's best to avoid putting this on your OneDrive as aI have found that sometimes VS Code can't properly access the .venv, possibly due to OneDrive's syncing, or long path names..
+
+copy the URL of the repo from the Code button, then go your top level folder in the terminal e.g. /projects
+and type 
+
+`git clone https://github.com/your-github-name/your-repo-name.git`
 
 ## Install packages with uv
 
 Then in either the codespace or local machine, recreate the default .venv with uv sync.
 Add new packages with uv add <package>.
 
-Don't forget that if you are running tools from the command line which are installed in the .venv you need to activate the virtual environment first, e.g. on Windows:
+Don't forget that **if you are running tools from the command line which are installed in the .venv** you need to activate the virtual environment first, e.g. on Windows:
 ```
 .\.venv\Scripts\activate
 ```
