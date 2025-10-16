@@ -51,7 +51,7 @@ In the root of your project folder you can type `code pyproject.toml` and manual
 
 Then when the .venv is active you should see:
 
-``(my-awesome-project) C:\Users\steve.crawshaw\projects\myproject>`
+`(my-awesome-project) C:\Users\steve.crawshaw\projects\myproject`
 
 Which tells you that the .venv is active, and which project it is for.
 
