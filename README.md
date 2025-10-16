@@ -1,5 +1,5 @@
 # vs-code-setup
-Setup for VS code projects like Arjan Codes
+Setup for VS code projects like [Arjan Codes](https://youtu.be/PwGKhvqJCQM?si=iykasikAMq893Uf-)
 
 This is for a VS Code project template that includes a virtual environment  (.venv), default python packages, and some recommended extensions. The template is for Python projects with a focus on data analysis, but can be adapted for other languages.
 
