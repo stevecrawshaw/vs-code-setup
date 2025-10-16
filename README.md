@@ -7,6 +7,8 @@ The .gitignore file is set up to ignore the virtual environment and other common
 
 ## How to use:
 
+Make sure you're logged in to your github account.
+
 Click "Use this template" - Create a new repository.
 
 Give the repo a name and description.
@@ -29,11 +31,10 @@ and type
 `git clone <hit CTRL+V to paste the URL>`
 
 ## Install uv
-
+(if you've done this you can skip this step)
 UV is a helpful tool for managing virtual environments and packages. It can be installed from PowerShell by running this line from powershell:
 
 `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
-
 
 ## Install packages with uv
 
