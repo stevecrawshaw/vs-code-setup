@@ -31,7 +31,7 @@ and type
 `git clone <hit CTRL+V to paste the URL>`
 
 ## Install uv
-(if you've already installed uv you can skip this step)
+(if you've already installed uv you can skip this step)<br>
 UV is a helpful tool for managing virtual environments and packages. It can be installed by running this line from powershell:
 
 `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
