@@ -21,19 +21,25 @@ copy the URL of the repo from the Code button.
 
 ![](images/git-clone.jpeg)
 
- then go your top level folder in the **terminal** e.g. 
+ then go your top level folder where you will do your analysis project in the **terminal** e.g. 
  `C:\Users\steve.crawshaw\projects`
 
 and type 
 
 `git clone <hit CTRL+V to paste the URL>`
 
+## Install uv
+
+UV is a helpful tool for managing virtual environments and packages. It can be installed from PowerShell by running this line from powershell:
+
+`powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
+
 
 ## Install packages with uv
 
-UV is a helpful tool for managing virtual environments and packages. It uses the pyproject.toml file to track packages, and creates a lock file (uv.lock) to ensure that the exact versions of packages are recorded. We're going to use the [project - based approach](https://docs.astral.sh/uv/guides/projects/#running-commands) to virtual environments, which means that the .venv folder will be created in the project folder.
+We're going to use the [project - based approach](https://docs.astral.sh/uv/guides/projects/#running-commands) to virtual environments, which means that the .venv folder will be created in the project folder. UV uses the pyproject.toml file to track packages, and creates a lock file (uv.lock) to ensure that the exact versions of packages are recorded.
 
-Make sure you're in the project folder in the terminal, and with one command you can create the default .venv and install the packages listed in the pyptoject.toml file by typing:
+Make sure you're in the project folder in the terminal, and with one command you can create the default .venv and install the packages listed in the pyproject.toml file by typing:
 
 `uv sync`
 
@@ -43,7 +49,7 @@ You can add new packages with `uv add <package>`, e.g. `uv add pandas`. You migh
 
 How this works is that uv looks at the pyproject.toml file to see what packages are listed there, and installs them into the .venv. It also updates the lock file (uv.lock) to ensure that the exact versions of packages are recorded. If your venv becomes corrupted you can simply delete it and use `uv sync` to recreate it. If you get a cryptic message about hardlink failures, you may need to delete the uv.lock file and then run `uv sync` again.
 
-It's good practicve to set the name of the virtual environment folder to .venv as this is automatically ignored by git, and is a common convention. When the .venv is active in the ternimal, you will see its name in brackets at the start of the terminal prompt, e.g. `(.venv) C:\Users\steve.crawshaw\projects\myproject>`. It's a good idea to set this name by changing the name of the project in pyproject.toml.
+It's good practice to set the name of the virtual environment folder to .venv as this is automatically ignored by git, and is a common convention. When the .venv is active in the terminal, you will see its name in brackets at the start of the terminal prompt, e.g. `(.venv) C:\Users\steve.crawshaw\projects\myproject>`. It's a good idea to set this name by changing the name of the project in pyproject.toml.
 
 In the root of your project folder you can type `code pyproject.toml` and manually change the name and description values. Alternatively there is a helper Powershell script you can run from the powershell terminal like this:
 
