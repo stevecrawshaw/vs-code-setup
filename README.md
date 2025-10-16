@@ -19,7 +19,7 @@ Here you are essentially copying the repo you created from the template onto you
 
 copy the URL of the repo from the Code button.
 
-![](plots/git-clone.jpeg)
+![](images/git-clone.jpeg)
 
  then go your top level folder in the **terminal** e.g. C:\Users\steve.crawshaw\projects
 
@@ -42,6 +42,18 @@ You should see a lot of packages being installed quite quickly.
 You can add new packages with `uv add <package>`, e.g. `uv add pandas`. You might need to do this as you develop code, and you get a message saying that a package is missing.
 
 How this works is that uv looks at the pyproject.toml file to see what packages are listed there, and installs them into the .venv. It also updates the lock file (uv.lock) to ensure that the exact versions of packages are recorded. If your venv becomes corrupted you can simply delete it and use `uv sync` to recreate it. If you get a cryptic message about hardlink failures, you may need to delete the uv.lock file and then run `uv sync` again.
+
+It's good practicve to set the name of the virtual environment folder to .venv as this is automatically ignored by git, and is a common convention. When the .venv is active in the ternimal, you will see its name in brackets at the start of the terminal prompt, e.g. `(.venv) C:\Users\steve.crawshaw\projects\myproject>`. It's a good idea to set this name by changing the name of the project in pyproject.toml.
+
+In the root of your project folder you can type `code pyproject.toml` and manually change the name and description values. Alternatively there is a helper Powershell script you can run from the powershell terminal like this:
+
+`.\update-project.ps1 -Name "my-awesome-project" -Description "This is my awesome project"`
+
+Then when the .venv is active you should see:
+
+``(my-awesome-project) C:\Users\steve.crawshaw\projects\myproject>`
+
+Which tells you that the .venv is active, and which project it is for.
 
 Don't forget that **if you are running tools from the command line which are installed in the .venv** you need to activate the virtual environment first, e.g. on Windows Powershell:
 
