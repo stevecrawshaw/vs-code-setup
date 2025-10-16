@@ -69,7 +69,8 @@ Don't forget that **if you are running tools from the command line which are ins
 .\.venv\Scripts\activate
 ```
 on Windows Git bash:
-```source .venv/Scripts/activate
+```
+source .venv/Scripts/activate
 ```
 
 on Linux or Mac:
@@ -78,9 +79,11 @@ source .venv/bin/activate
 ```
 ## Selecting the Python interpreter in VS Code
 
-Once the .venv is created, you need to tell VS Code to use the Python interpreter from the .venv. You can do this by opening the command palette (Ctrl+Shift+P) and typing "Python: Select Interpreter". You should see an option that includes ".venv". Select this option.
+Once the .venv is created, you need to tell VS Code to use the Python interpreter from the .venv. You can do this by opening the command palette (Ctrl+Shift+P) and typing "Python: Select Interpreter". You should see an option that includes ".venv". If you renamed the project in the pyproject.toml file it will be called like (my-project-name) rather than (.venv). Select this option.
 
 You should now be in a position to run Python code in VS Code using the packages installed in the .venv.
+
+You can create a new python file by typing `code new-file.py` from your project folder and strat writing code. If you use code fences like `# %%' you will get an interactive notebook experience where you can run a chunk at a time with CTRL+ENTER or SHIFT+ENTER.
 
 ## Extensions
 Some recommended extensions are included in .vscode/extensions.json.
