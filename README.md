@@ -21,7 +21,7 @@ Here you are essentially copying the repo you created from the template onto you
 
 copy the URL of the repo from the Code button.
 
-![](images/git-clone.jpeg)
+![](plots/git-clone.jpeg)
 
  then go your top level folder where you will do your analysis project in the **terminal** e.g. 
  `C:\Users\steve.crawshaw\projects`
@@ -31,8 +31,8 @@ and type
 `git clone <hit CTRL+V to paste the URL>`
 
 ## Install uv
-(if you've done this you can skip this step)
-UV is a helpful tool for managing virtual environments and packages. It can be installed from PowerShell by running this line from powershell:
+(if you've already installed uv you can skip this step)
+UV is a helpful tool for managing virtual environments and packages. It can be installed by running this line from powershell:
 
 `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
 
@@ -62,7 +62,7 @@ You should see a lot of packages being installed quite quickly.
 
 You can add new packages with `uv add <package>`, e.g. `uv add pandas`. You might need to do this as you develop code, and you get a message saying that a package is missing.
 
-How this works is that uv looks at the pyproject.toml file to see what packages are listed there, and installs them into the .venv. It also updates the lock file (uv.lock) to ensure that the exact versions of packages are recorded. If your venv becomes corrupted you can simply delete it and use `uv sync` to recreate it. If you get a cryptic message about hardlink failures, you may need to delete the uv.lock file and then run `uv sync` again.
+UV looks at the pyproject.toml file to see what packages are listed there, and installs them into the .venv. It also updates the lock file (uv.lock) to ensure that the exact versions of packages are recorded. If your venv becomes corrupted you can simply delete it and use `uv sync` to recreate it. If you get a cryptic message about hardlink failures, you may need to delete the uv.lock file and then run `uv sync` again. If you get a message about cache you can do `uv cache clean`.
 
 Don't forget that **if you are running tools from the command line which are installed in the .venv** you need to activate the virtual environment first, e.g. on Windows Powershell:
 
@@ -73,7 +73,6 @@ on Windows Git bash:
 ```
 source .venv/Scripts/activate
 ```
-
 on Linux or Mac:
 ```
 source .venv/bin/activate
@@ -84,7 +83,7 @@ Once the .venv is created, you need to tell VS Code to use the Python interprete
 
 You should now be in a position to run Python code in VS Code using the packages installed in the .venv.
 
-You can create a new python file by typing `code new-file.py` from your project folder and strat writing code. If you use code fences like `# %%' you will get an interactive notebook experience where you can run a chunk at a time with CTRL+ENTER or SHIFT+ENTER.
+You can create a new python file by typing `code new-file.py` from your project folder and start writing code. If you use code fences like `# %%' you will get an [interactive notebook experience](https://code.visualstudio.com/docs/python/jupyter-support-py) where you can run a chunk at a time with CTRL+ENTER or SHIFT+ENTER or run the whole script.
 
 ## Extensions
 Some recommended extensions are included in .vscode/extensions.json.

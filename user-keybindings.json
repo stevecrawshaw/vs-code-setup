@@ -1,4 +1,3 @@
-// Place your key bindings in this file to override the defaultsauto[]
 [
     {
         "key": "ctrl+shift+f10",
@@ -9,7 +8,6 @@
         "command": "workbench.action.terminal.runSelectedText",
         "when": "editorTextFocus && editorLangId == sql"
     },
-    // keybindings for R scripts. 
     {
         "key": "Ctrl+Shift+m",
         "command": "type",
@@ -26,7 +24,6 @@
         },
         "when": "editorTextFocus && editorLangId == r"
     },
-    // keybindings for Rmarkdown
     {
         "key": "Ctrl+Shift+m",
         "command": "type",
@@ -43,7 +40,6 @@
         },
         "when": "editorTextFocus && editorLangId == rmd"
     },
-    // keybindings for R terminal (radian included)
     {
         "key": "Ctrl+Shift+m",
         "command": "workbench.action.terminal.sendSequence",
