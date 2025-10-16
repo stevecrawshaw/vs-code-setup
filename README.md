@@ -1,7 +1,7 @@
 # vs-code-setup
 Setup for VS code projects like Arjan Codes
 
-This is for a VS Code project template that includes a virtual environment (venv)and some recommended extensions. The template is for Python projects with a focus on data analysis, but can be adapted for other languages.
+This is for a VS Code project template that includes a virtual environment  (.venv), default python packages, and some recommended extensions. The template is for Python projects with a focus on data analysis, but can be adapted for other languages.
 
 The .gitignore file is set up to ignore the virtual environment and other common files that should not be committed to the repository. It also includes common R files and folders which should not be pushed to public repos.
 
@@ -10,10 +10,10 @@ The .gitignore file is set up to ignore the virtual environment and other common
 Click "Use this template" - Create a new repository.
 
 Give the repo a name and description.
-Create the repository.
+Create the repository - it will be a new repository on your github account.
 
 ## Clone the repository
-Here you are essentially copying the repo you created from the template onto your local machine, and referencing it as a git repo that is linked to the gitHUB repo.
+Here you are essentially copying the repo you created from the template onto your local machine, and referencing it as a git repo that is linked to the GitHub repo.
 
 **It's best to avoid putting this on your OneDrive as I have found that sometimes VS Code can't properly access the .venv, possibly due to OneDrive's syncing, or long path names.** Because you are creating a github repo, this will always be backed up, so you don't need OneDrive for that.
 
@@ -21,13 +21,13 @@ copy the URL of the repo from the Code button.
 
 ![](images/git-clone.jpeg)
 
- then go your top level folder in the **terminal** e.g. C:\Users\steve.crawshaw\projects
+ then go your top level folder in the **terminal** e.g. 
+ `C:\Users\steve.crawshaw\projects`
 
 and type 
 
-`git clone https://github.com/your-github-name/your-repo-name.git`
+`git clone <hit CTRL+V to paste the URL>`
 
-replacing 'your-repo-name` and 'your-github-name' with your actual repo name and github user name.
 
 ## Install packages with uv
 
