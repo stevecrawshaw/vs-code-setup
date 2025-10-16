@@ -1,9 +1,9 @@
 # vs-code-setup
 Setup for VS code projects like Arjan Codes
 
-This is for a VS Code project template that includes a virtual environment and some recommended extensions. The template is for Python projects with a focus on data analysis, but can be adapted for other languages.
+This is for a VS Code project template that includes a virtual environment (venv)and some recommended extensions. The template is for Python projects with a focus on data analysis, but can be adapted for other languages.
 
-The .gitignore file is set up to ignore the virtual environment and other common files that should not be committed to the repository. It also includes common R files and folders which should not be pushed to publis repos.
+The .gitignore file is set up to ignore the virtual environment and other common files that should not be committed to the repository. It also includes common R files and folders which should not be pushed to public repos.
 
 ## How to use:
 
@@ -15,19 +15,36 @@ Create the repository.
 ## Clone the repository
 Here you are essentially copying the repo you created from the template onto your local machine, and referencing it as a git repo that is linked to the gitHUB repo.
 
-It's best to avoid putting this on your OneDrive as aI have found that sometimes VS Code can't properly access the .venv, possibly due to OneDrive's syncing, or long path names..
+**It's best to avoid putting this on your OneDrive as I have found that sometimes VS Code can't properly access the .venv, possibly due to OneDrive's syncing, or long path names.** Because you are creating a github repo, this will always be backed up, so you don't need OneDrive for that.
 
-copy the URL of the repo from the Code button, then go your top level folder in the terminal e.g. /projects
+copy the URL of the repo from the Code button.
+
+![](plots/git-clone.jpeg)
+
+ then go your top level folder in the **terminal** e.g. C:\Users\steve.crawshaw\projects
+
 and type 
 
 `git clone https://github.com/your-github-name/your-repo-name.git`
 
+replacing 'your-repo-name` and 'your-github-name' with your actual repo name and github user name.
+
 ## Install packages with uv
 
-Then in either the codespace or local machine, recreate the default .venv with uv sync.
-Add new packages with uv add <package>.
+UV is a helpful tool for managing virtual environments and packages. It uses the pyproject.toml file to track packages, and creates a lock file (uv.lock) to ensure that the exact versions of packages are recorded. We're going to use the [project - based approach](https://docs.astral.sh/uv/guides/projects/#running-commands) to virtual environments, which means that the .venv folder will be created in the project folder.
 
-Don't forget that **if you are running tools from the command line which are installed in the .venv** you need to activate the virtual environment first, e.g. on Windows:
+Make sure you're in the project folder in the terminal, and with one command you can create the default .venv and install the packages listed in the pyptoject.toml file by typing:
+
+`uv sync`
+
+You should see a lot of packages being installed quite quickly.
+
+You can add new packages with `uv add <package>`, e.g. `uv add pandas`. You might need to do this as you develop code, and you get a message saying that a package is missing.
+
+How this works is that uv looks at the pyproject.toml file to see what packages are listed there, and installs them into the .venv. It also updates the lock file (uv.lock) to ensure that the exact versions of packages are recorded. If your venv becomes corrupted you can simply delete it and use `uv sync` to recreate it. If you get a cryptic message about hardlink failures, you may need to delete the uv.lock file and then run `uv sync` again.
+
+Don't forget that **if you are running tools from the command line which are installed in the .venv** you need to activate the virtual environment first, e.g. on Windows Powershell:
+
 ```
 .\.venv\Scripts\activate
 ```
@@ -35,6 +52,12 @@ on Linux or Mac:
 ```
 source .venv/bin/activate
 ```
+## Selecting the Python interpreter in VS Code
+
+Once the .venv is created, you need to tell VS Code to use the Python interpreter from the .venv. You can do this by opening the command palette (Ctrl+Shift+P) and typing "Python: Select Interpreter". You should see an option that includes ".venv". Select this option.
+
+You should now be in a position to run Python code in VS Code using the packages installed in the .venv.
+
 ## Extensions
 Some recommended extensions are included in .vscode/extensions.json.
 
