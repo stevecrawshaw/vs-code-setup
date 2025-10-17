@@ -213,7 +213,7 @@ cython_debug/
 
 # Data analysis typical files and folders
 plots/*
-!plots/git-clone.jpeg
+!plots/git-clone.png
 data/*
 duckdb.exe
 .duckdb

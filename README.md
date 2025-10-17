@@ -21,7 +21,7 @@ Here you are essentially copying the repo you created from the template onto you
 
 copy the URL of the repo from the Code button.
 
-![](plots/git-clone.jpeg)
+![](plots/git-clone.png)
 
  then go your top level folder where you will do your analysis project in the **terminal** e.g. 
  `C:\Users\steve.crawshaw\projects`
