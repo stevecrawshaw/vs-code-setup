@@ -5,7 +5,7 @@ param(
     [Parameter(Mandatory=$true)]
     [string]$Description
 )
-
+# USAGE .\update-project.ps1 -Name "my-awesome-project" -Description "This is my awesome project"
 # Set error action preference to stop on errors
 $ErrorActionPreference = "Stop"
 
