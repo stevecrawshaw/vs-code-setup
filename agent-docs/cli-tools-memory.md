@@ -12,9 +12,11 @@
     - rg -l "pattern" | xargs sed -i 's/old/new/g' for mass replacements
     - RESPECT WHITE SPACE in .py files
   5. Project Structure:
-    - tree -L 2 directories for quick overview
+    - tree -L 2 directories for quick overview in powershell
+    - 'cmd //c tree' from bash
   6. JSON Inspection:
     - jq '.key' file.json for quick JSON parsing
+  7. Get help: Use e.g. rg --help
 
 ## The Game-Changing Pattern:
 
@@ -23,10 +25,9 @@
 
   Efficiently replace dozens of Edit tool calls!
 
-  Before reaching for Read/Edit/Glob tools, ask myself:
+  Before reaching for Read/Edit/Glob tools, ask:
 
   - Can rg find this pattern faster?
   - Can fd locate these files quicker?
   - Can sed fix all instances at once?
   - Can jq extract this JSON data directly?
-  - Use e.g. rg --help
